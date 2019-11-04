@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+My Reviews
+{% endblock %}
+
+{% block main %}
+<div>
+
+    {% if reviews %}
+    <table class="table table-striped">
+        <tr>
+            <th>Book Title</th>
+            <th>Author</th>
+            <th>Year</th>
+            <th>Link</th>
+            <th>Rating</th>
+            <th>Comment</th>
+        </tr>
+        <!-- Iterate over array to produce a new row for each result -->
+        {% for review in reviews %}
+        
+        <tr>
+            <td>{{ review.title }}</td>
+            <td>{{ review.author }}</td>
+            <td>{{ review.year }}</td>
+            <td><a href="/bookpage/{{ review.isbn }}">More Info</a></td>
+            <td>{{ review.rating }}</td>
+            <td>{{ review.comments }}</td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    {% else %}
+    
+    <p>Sorry, no reviews were found :(</p>
+    
+    {% endif %}
+
+</div>
+{% endblock %}

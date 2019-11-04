@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Search Results
+{% endblock %}
+
+{% block main %}
+<div>
+
+    {% if rows %}
+    <table class="table table-striped">
+        <tr>
+            <th>Book Title</th>
+            <th>Author</th>
+            <th>Year</th>
+            <th>Link</th>
+        </tr>
+        <!-- Iterate over array to produce a new row for each result -->
+        {% for row in rows %}
+        
+        <tr>
+            <td>{{ row.title }}</td>
+            <td>{{ row.author }}</td>
+            <td>{{ row.year }}</td>
+            <td><a href="/bookpage/{{ row.isbn }}">More Info</a></td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    {% else %}
+    
+    <p>Sorry, no results were found :(</p>
+    
+    {% endif %}
+
+</div>
+{% endblock %}
