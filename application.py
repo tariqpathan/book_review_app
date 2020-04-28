@@ -177,7 +177,7 @@ def api(isbn):
     rows = db.execute("SELECT * FROM books WHERE isbn=:isbn", {"isbn": isbn}).fetchall()
     print(rows)
     if not rows:
-        return error(404, "No book with that isbn found")
+        return jsonify("error, no isbn found", 404)
     book = dict(rows[0])
     book["review_count"] = goodreads_reviews(isbn)["books"][0]["work_ratings_count"]
     book["average_score"] = goodreads_reviews(isbn)["books"][0]["average_rating"]
