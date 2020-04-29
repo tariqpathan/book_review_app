@@ -5,3 +5,4 @@ SQLAlchemy
 flask-bcrypt
 requests
 gunicorn
+werkzeug==0.15
