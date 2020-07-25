@@ -113,7 +113,7 @@ def search():
         try:
             int(query)
             rows = db.execute("SELECT * FROM books WHERE"
-                            " CAST(year AS VARCHAR(4)) IILIKE :query OR"
+                            " CAST(year AS VARCHAR(4)) ILIKE :query OR"
                             " isbn ILIKE :query", {"query": wildcard_query}).fetchmany(20)
 
         except ValueError:
